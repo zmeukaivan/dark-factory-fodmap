@@ -1,0 +1,21 @@
+{
+  "name": "@dark-factory-fodmap/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "expo start",
+    "build:android": "expo build:android",
+    "build:ios": "expo build:ios",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "expo": "~51.0.0",
+    "react": "^18.3.0",
+    "react-native": "^0.74.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.4.5"
+  }
+}

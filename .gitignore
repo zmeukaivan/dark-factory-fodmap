@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.expo/
+*.tsbuildinfo
+
+# Testing
+coverage/
+*.log
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Turbo
+.turbo/
+
+# React Native
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Misc
+.cache/
+temp/
