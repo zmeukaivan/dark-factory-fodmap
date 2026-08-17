@@ -37,6 +37,11 @@ done
 
 [ -n "$prompt" ] || { echo "opencode-agent: no prompt received" >&2; exit 2; }
 
+# A desktop opencode session exports these and `opencode run` then tries to attach to it
+# (--attach) and dies with "Session not found". A fresh headless run must start its own
+# server, so strip the attach credentials and let it do exactly that.
+unset OPENCODE_SERVER_PASSWORD OPENCODE_SERVER_USERNAME OPENCODE_CLIENT OPENCODE_SERVER 2>/dev/null || true
+
 args=()
 [ -n "$model" ] && args+=(-m "$model")
 [ -n "$dir" ]   && args+=(--dir "$dir")
