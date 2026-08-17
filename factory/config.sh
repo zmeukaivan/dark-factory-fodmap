@@ -77,7 +77,7 @@ FACTORY_E2E_FLOOR_KEY="${FACTORY_E2E_FLOOR_KEY:-e2e_steps_asserted}"
 # --- state -------------------------------------------------------------------
 # `github` wherever an origin remote exists, `files` for a local clone with no remote -
 # which is what you want while debugging the machinery rather than the work.
-FACTORY_BACKEND="${FACTORY_BACKEND:-github}"
+FACTORY_BACKEND="${FACTORY_BACKEND:-}"
 
 # --- the dial ----------------------------------------------------------------
 # 0 workflows exist, run by hand   <- where every factory starts, and stays until a lap
