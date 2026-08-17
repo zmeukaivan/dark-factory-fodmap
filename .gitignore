@@ -23,8 +23,15 @@ coverage/
 .env.test.local
 .env.production.local
 credentials.json
+secrets.json
 service-account.json
+*.local
+*credential*
+*secret*
 *.pem
+*.key
+id_rsa
+id_ed25519
 
 # Tool configs that may hold tokens
 .opencode/settings.local.json
@@ -71,6 +78,12 @@ temp/
 
 # Factory runtime state
 .factory/runs/
+.factory/locks-runtime/
+.factory/STOP
+.factory/findings/
+.worktrees/
+builds/
+factory-*.log
 
 # Python
 __pycache__/
