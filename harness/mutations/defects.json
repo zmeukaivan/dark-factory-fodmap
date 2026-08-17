@@ -1,0 +1,37 @@
+{
+  "_what_this_is": [
+    "Deliberate defects injected into REAL source on a throwaway copy. Each must make",
+    "the gate go red. One that escapes is a class of bug that can currently merge with",
+    "nobody reading the diff. THIS FILE IS PROTECTED."
+  ],
+  "defects": [
+    {
+      "id": "symptoms-silently-dropped",
+      "file": "packages/core/src/in-memory-store.ts",
+      "find": "this.symptoms.set(symptom.date, [...list, symptom]);",
+      "replace": "this.symptoms.set(symptom.date, list);",
+      "why": "a logged symptom never appears in the day view; the correlation silently breaks"
+    },
+    {
+      "id": "day-view-loses-symptoms",
+      "file": "packages/core/src/in-memory-store.ts",
+      "find": "symptoms: this.symptoms.get(date) ?? [],",
+      "replace": "symptoms: [],",
+      "why": "the day view shows meals but never symptoms; the food-to-symptom link is gone"
+    },
+    {
+      "id": "meal-reuse-returns-stale",
+      "file": "packages/core/src/in-memory-store.ts",
+      "find": "return matches[matches.length - 1];",
+      "replace": "return matches[0];",
+      "why": "reusing a meal name returns stale ingredients; only a scenario logging the same name twice notices"
+    },
+    {
+      "id": "index-export-broken",
+      "file": "packages/core/src/index.ts",
+      "find": "export * from './in-memory-store';\n",
+      "replace": "",
+      "why": "the public entrypoint no longer re-exports the store; the documented surface breaks while internal tests still pass"
+    }
+  ]
+}

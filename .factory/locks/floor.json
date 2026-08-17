@@ -1,0 +1,9 @@
+{
+  "_what_this_is": "THE RATCHET. Protected - only a human commit can move these numbers. The gate asserts observed >= floor, and floor(head) >= floor(base).",
+
+  "e2e_steps_asserted": 4,
+  "holdout_assertions": 5,
+  "unit_tests": 6,
+
+  "_raise_these": "On the same human commit that adds the assertions."
+}

@@ -68,3 +68,10 @@ temp/
 # Agent runtime
 .playwright-mcp/
 .opencode/opencode-loop/
+
+# Factory runtime state
+.factory/runs/
+
+# Python
+__pycache__/
+*.pyc

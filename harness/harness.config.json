@@ -1,0 +1,15 @@
+{
+  "_what_this_is": [
+    "The stack-specific half of the harness. Commands the step ladder (ci.py) runs.",
+    "Leave a step empty and it is SKIPPED LOUDLY, never mistaken for a passed one."
+  ],
+  "static": "npx tsc --noEmit",
+  "unit": "npx vitest run --no-color",
+  "unit_count_pattern": "Tests\\s+(\\d+)\\s+passed",
+  "driver": "library",
+  "e2e_timeout_s": 120,
+  "library": {
+    "import_check": "npx tsx harness/import-check.ts",
+    "e2e_cmd": "npx tsx harness/e2e.ts"
+  }
+}
