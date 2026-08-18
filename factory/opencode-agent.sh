@@ -19,13 +19,16 @@ set -euo pipefail
 
 prompt=""
 model=""
-dir=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
     -p|--prompt)          prompt="$2"; shift 2 ;;
     --model)              model="$2";   shift 2 ;;
-    --add-dir)            dir="$2";     shift 2 ;;
+    # --add-dir is dropped, not mapped to --dir. `--dir` CHDIRs the agent, but the runner
+    # already `cd`s into the worktree before invoking us; mapping it sent the builder into
+    # the ROOT checkout instead, so its edits landed outside the worktree and the run
+    # escalated with an empty diff. Run in the process cwd (the worktree) instead.
+    --add-dir)            shift 2 ;;
     --output-format)      shift 2 ;;   # the runner only ever passes json
     --allowedTools)       shift 2 ;;
     --permission-mode)    shift 2 ;;
@@ -44,6 +47,5 @@ unset OPENCODE_SERVER_PASSWORD OPENCODE_SERVER_USERNAME OPENCODE_CLIENT OPENCODE
 
 args=()
 [ -n "$model" ] && args+=(-m "$model")
-[ -n "$dir" ]   && args+=(--dir "$dir")
 
 exec opencode run "$prompt" "${args[@]}" --format json --dangerously-skip-permissions
