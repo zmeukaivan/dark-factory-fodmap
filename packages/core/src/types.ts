@@ -34,3 +34,38 @@ export interface Store {
   listDay(date: string): Promise<DayView>;
   findMealByName(name: string): Promise<Meal | undefined>;
 }
+
+export type FodmapRating = 'low' | 'high';
+
+export type FodmapCategory =
+  | 'fruit'
+  | 'vegetable'
+  | 'grains-cereals'
+  | 'legumes-pulses'
+  | 'dairy'
+  | 'meat-poultry-fish'
+  | 'nuts-seeds'
+  | 'sugars-sweeteners'
+  | 'condiments-sauces'
+  | 'drinks';
+
+export type FodmapType = 'fructans' | 'gos' | 'lactose' | 'fructose' | 'polyols';
+
+export type DataSource = 'monash' | 'nhs';
+
+export interface Portion {
+  amount?: number;
+  unit?: string;
+  description: string;
+}
+
+export interface Food {
+  id: string;
+  name: string;
+  category: FodmapCategory;
+  fodmapRating: FodmapRating;
+  safePortion?: Portion;
+  highInFodmaps: FodmapType[];
+  source: DataSource;
+  notes?: string;
+}
