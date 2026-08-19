@@ -10,3 +10,11 @@ export function filterFoods(
       (criteria.category === undefined || food.category === criteria.category),
   );
 }
+
+export function isLowFodmap(food: Food): boolean {
+  return food.fodmapRating === 'low';
+}
+
+export function isHighFodmap(food: Food): boolean {
+  return food.fodmapRating === 'high';
+}
