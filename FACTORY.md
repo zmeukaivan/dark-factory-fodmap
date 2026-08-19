@@ -63,7 +63,7 @@ Required step count: **4** (`E2E_PASSED steps=4`; ratchet in `.factory/locks/flo
 
 | Level | Automatic | Reached |
 |---|---|---|
-| 1 | labelled issue → PR opens | |
+| 1 | labelled issue → PR opens | 2026-08-19 |
 | 2 | validator runs and posts a verdict | |
 | 3 | validator auto-merges on green structural gates | |
 | 4 | self-triage, and a scheduled test files its own bugs | |
