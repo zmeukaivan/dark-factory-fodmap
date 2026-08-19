@@ -6,7 +6,7 @@
   running unattended.
 -->
 
-**Current autonomy level: 2** - a labelled issue is implemented and independently validated to a verdict; a human reviews and merges.
+**Current autonomy level: 3** - a labelled issue is implemented, independently validated, and auto-merged on green structural gates; deploy runs after the merge.
 **Raised to this level on:** 2026-08-19
 **Stop button:** `touch .factory/STOP` (local kill file) and a `factory:stop` label on any open issue (fails closed).
 **Built from PRD:** `docs/low-fodmap-diet-tracker.prd.md` - `MISSION.md` is its compression. Change one, change both.
@@ -64,7 +64,7 @@ Required step count: **4** (`E2E_PASSED steps=4`; ratchet in `.factory/locks/flo
 | Level | Automatic | Reached |
 |---|---|---|
 | 1 | labelled issue → PR opens | 2026-08-19 |
-| 2 | validator runs and posts a verdict | |
+| 2 | validator runs and posts a verdict | 2026-08-19 |
 | 3 | validator auto-merges on green structural gates | |
 | 4 | self-triage, and a scheduled test files its own bugs | |
 | 5 | writes its own issues from the mission | |
