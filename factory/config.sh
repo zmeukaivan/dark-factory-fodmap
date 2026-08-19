@@ -143,16 +143,25 @@ FACTORY_FILE_CAP="${FACTORY_FILE_CAP:-12}"
 # is a comment. Set both of these before you expect a deploy to do anything.
 
 # What a built snapshot contains. Everything the app needs to run, and nothing else.
-FACTORY_BUILD_INCLUDE="${FACTORY_BUILD_INCLUDE:-src app README.md}"
+# This is a Node workspace (npm) monorepo: the headless core library is packages/*, the
+# workspace root config makes `npm install` and `npx tsc` resolve, and scripts/ carries
+# the deploy smoke. apps/* is deliberately NOT included yet - it is an empty scaffold,
+# and including it would drag the Next.js dependency tree into a library-only snapshot.
+# Add `apps` here (and point FACTORY_HEALTH_CMD at `next start`) once apps/web has code.
+FACTORY_BUILD_INCLUDE="${FACTORY_BUILD_INCLUDE:-packages package.json package-lock.json tsconfig.json scripts}"
 
 # A command that starts the built snapshot and proves it worked. Run from inside the
 # build directory. Not "did the process exit 0" - a process that starts, hangs and
 # returns zero is indistinguishable from a healthy one without a positive marker.
-FACTORY_HEALTH_CMD="${FACTORY_HEALTH_CMD:-}"
+#
+# The product is currently a headless library (no server, no process), so "starts and
+# answers" is "installs, type-checks, and its public API does the thing". When apps/web
+# grows a real UI, replace this with a `next build && next start` + curl of the page.
+FACTORY_HEALTH_CMD="${FACTORY_HEALTH_CMD:-npm install --no-audit --no-fund --prefer-offline && npx tsc --noEmit && npx tsx scripts/smoke.ts}"
 
 # Extended regexes that must ALL appear in the health output. Assert an outcome a user
 # would notice, not a status code.
-FACTORY_HEALTH_MARKERS="${FACTORY_HEALTH_MARKERS:-}"
+FACTORY_HEALTH_MARKERS="${FACTORY_HEALTH_MARKERS:-SMOKE_OK}"
 
 # --- the trigger (component 2) -----------------------------------------------
 # Read by factory/install-trigger.sh. Slower than feels right: a fast loop multiplies
