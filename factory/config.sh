@@ -96,7 +96,10 @@ FACTORY_BACKEND="${FACTORY_BACKEND:-}"
 # The SHIPPED value is still 0, deliberately. A fresh clone must not auto-merge before a
 # single lap has been proven by hand, and `factory_doctor` refuses 3 while there is no
 # holdout, so the dial cannot outrun the evidence. Raise it here once it has.
-FACTORY_AUTONOMY="${FACTORY_AUTONOMY:-0}"
+#
+# Raised to 1 on 2026-08-19 after a hand-run lap merged (PR #2). Level 1: a labelled
+# issue is implemented to an open PR; a human still reviews and merges.
+FACTORY_AUTONOMY="${FACTORY_AUTONOMY:-1}"
 
 FACTORY_MAX_PARALLEL="${FACTORY_MAX_PARALLEL:-1}"
 FACTORY_MAX_FIX_ATTEMPTS="${FACTORY_MAX_FIX_ATTEMPTS:-2}"

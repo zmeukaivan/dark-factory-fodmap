@@ -6,8 +6,8 @@
   running unattended.
 -->
 
-**Current autonomy level: 0** - workflows exist and are run by hand; the dispatcher does nothing.
-**Raised to this level on:** 2026-08-19 (shipped at 0; never raised above it yet)
+**Current autonomy level: 1** - a labelled issue is implemented to an open PR; a human reviews and merges.
+**Raised to this level on:** 2026-08-19
 **Stop button:** `touch .factory/STOP` (local kill file) and a `factory:stop` label on any open issue (fails closed).
 **Built from PRD:** `docs/low-fodmap-diet-tracker.prd.md` - `MISSION.md` is its compression. Change one, change both.
 
