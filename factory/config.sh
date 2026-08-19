@@ -43,6 +43,14 @@ FACTORY_MODEL_CHEAP="${FACTORY_MODEL_CHEAP:-opencode-go/deepseek-v4-flash}"
 # budget - it should be high enough that hitting it means something went wrong.
 FACTORY_MAX_BUDGET_USD="${FACTORY_MAX_BUDGET_USD:-8}"
 
+# A WALL-CLOCK leash on each node, not a cost cap. A node can hang - observed: the prime
+# node ran the full gate (mutations) and spawned a browser, then produced no output for
+# 12 minutes with no mechanism to stop it. `timeout` bounds that: a node that outlives
+# this is killed and reported NODE_FAILED, and the workflow escalates or continues as it
+# does for any other node failure. Keep it well above the slowest legitimate node (a
+# premium plan has run ~4-5 min here) so it only fires on a true hang.
+FACTORY_NODE_TIMEOUT_MINUTES="${FACTORY_NODE_TIMEOUT_MINUTES:-15}"
+
 # --- the validation harness --------------------------------------------------
 # THE MOST IMPORTANT LINE IN THIS FILE.
 #
@@ -262,6 +270,7 @@ export FACTORY_AGENT \
        FACTORY_MAX_PARALLEL \
        FACTORY_MODEL_CHEAP \
        FACTORY_MODEL_PREMIUM \
+       FACTORY_NODE_TIMEOUT_MINUTES \
        FACTORY_NOTIFY_CMD \
        FACTORY_REQUIRED_MARKERS \
        FACTORY_RUNNER \

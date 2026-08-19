@@ -54,6 +54,7 @@ MODEL_CHEAP="$FACTORY_MODEL_CHEAP"
 # money, it throws away the expensive half of the lap. This is a COST guard and not a
 # safety gate: nothing downstream trusts it, and the gate is identical either side of it.
 MAX_BUDGET="$FACTORY_MAX_BUDGET_USD"
+NODE_TIMEOUT="${FACTORY_NODE_TIMEOUT_MINUTES:-15}"
 
 # --- which backend, read off the target -------------------------------------
 # Not from an env var. A workflow handed `gh:pr:4` is working on a pull request whatever
@@ -264,7 +265,8 @@ node() {                # node <name> <model> <prompt-file> <allowed-tools>
   fi
 
   # shellcheck disable=SC2086 -- HOLDOUT_DENY is a deliberate word list, not one argument.
-  if ! "$AGENT" -p "$(cat "$rendered")" \
+  if ! timeout --kill-after=30s "${NODE_TIMEOUT}m" \
+        "$AGENT" -p "$(cat "$rendered")" \
         --model "$model" \
         --allowedTools "$tools" \
         --disallowedTools $HOLDOUT_DENY \

@@ -25,8 +25,10 @@ Keep it scannable. Cover:
   `Store` interface, how checks are written and counted
 - **The observability surface**: what the harness already asserts (E2E steps, holdout
   scenarios, mutation defects), and which of them the issue's area depends on
-- **Current gate counts**: from `harness/ci.py` output and `.factory/locks/floor.json`, so
-  the plan knows what the ratchet floor is
+- **Current gate counts**: read them from `.factory/locks/floor.json` (the ratchet) and
+  `harness/harness.config.json`. Do **not** run `harness/ci.py` to get them - the full
+  gate's mutation step is slow and is not what priming is for; if you need the live unit
+  count, `harness/ci.py --quick` is the most you should run.
 - **Anything that looks like it is already broken** in the area, distinct from the issue.
   Do not fix it. Name it, and note whether it is worth a separate issue.
 
