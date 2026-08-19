@@ -99,7 +99,9 @@ FACTORY_BACKEND="${FACTORY_BACKEND:-}"
 #
 # Raised to 1 on 2026-08-19 after a hand-run lap merged (PR #2). Level 1: a labelled
 # issue is implemented to an open PR; a human still reviews and merges.
-FACTORY_AUTONOMY="${FACTORY_AUTONOMY:-1}"
+# Raised to 2 on 2026-08-19 after a level-1 lap merged (PR #4): the dispatcher now also
+# runs the independent validator and posts a verdict; a human still merges.
+FACTORY_AUTONOMY="${FACTORY_AUTONOMY:-2}"
 
 FACTORY_MAX_PARALLEL="${FACTORY_MAX_PARALLEL:-1}"
 FACTORY_MAX_FIX_ATTEMPTS="${FACTORY_MAX_FIX_ATTEMPTS:-2}"

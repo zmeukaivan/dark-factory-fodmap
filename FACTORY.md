@@ -6,7 +6,7 @@
   running unattended.
 -->
 
-**Current autonomy level: 1** - a labelled issue is implemented to an open PR; a human reviews and merges.
+**Current autonomy level: 2** - a labelled issue is implemented and independently validated to a verdict; a human reviews and merges.
 **Raised to this level on:** 2026-08-19
 **Stop button:** `touch .factory/STOP` (local kill file) and a `factory:stop` label on any open issue (fails closed).
 **Built from PRD:** `docs/low-fodmap-diet-tracker.prd.md` - `MISSION.md` is its compression. Change one, change both.
