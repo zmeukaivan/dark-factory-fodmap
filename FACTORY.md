@@ -65,7 +65,7 @@ Required step count: **4** (`E2E_PASSED steps=4`; ratchet in `.factory/locks/flo
 |---|---|---|
 | 1 | labelled issue → PR opens | 2026-08-19 |
 | 2 | validator runs and posts a verdict | 2026-08-19 |
-| 3 | validator auto-merges on green structural gates | |
+| 3 | validator auto-merges on green structural gates | 2026-08-19 |
 | 4 | self-triage, and a scheduled test files its own bugs | |
 | 5 | writes its own issues from the mission | |
 
@@ -93,3 +93,4 @@ Append only. Every entry is a rule that now exists because of it.
 |---|---|---|
 | 2026-08-18 | Headless `opencode run` (v1.14.31) threw `ConfigInvalidError` against the current auth, blocking every node | Upgraded the standalone CLI to v1.18.18 |
 | 2026-08-18 | Builder edited the root checkout instead of the worktree (`--add-dir` → `--dir` remapped opencode's cwd), so its edits landed outside the worktree | Dropped the remapping in `factory/opencode-agent.sh`; builders now run in the worktree |
+| 2026-08-19 | Prime node (issue #7) hung ~12 min with no output — full tool access let it run the full gate and spawn a browser. Killed it; the runner logged `NODE_FAILED` and continued to `plan`, which re-derived the priming context and the lap completed | Not yet fixed. The root cause is that `opencode-agent.sh` drops `--allowedTools`, so nodes get unrestricted tool access the prompts do not account for |
