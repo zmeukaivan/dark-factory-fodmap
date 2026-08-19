@@ -81,9 +81,12 @@ temp/
 .factory/locks-runtime/
 .factory/STOP
 .factory/findings/
+.factory/assumptions/
+.factory/needs-human.md
 .worktrees/
 builds/
 factory-*.log
+factory/tick.cmd
 
 # Python
 __pycache__/
