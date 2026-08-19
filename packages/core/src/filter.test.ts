@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { filterFoods } from './filter';
+import { filterFoods, isLowFodmap, isHighFodmap } from './filter';
 import { Food } from './types';
 
 function food(overrides: Partial<Food> = {}): Food {
@@ -66,5 +66,25 @@ describe('filterFoods', () => {
     const snapshot = [...foods];
     filterFoods(foods, { rating: 'low' });
     expect(foods).toEqual(snapshot);
+  });
+});
+
+describe('isLowFodmap', () => {
+  it('returns true for a low-FODMAP food', () => {
+    expect(isLowFodmap(food())).toBe(true);
+  });
+
+  it('returns false for a high-FODMAP food', () => {
+    expect(isLowFodmap(food({ fodmapRating: 'high' }))).toBe(false);
+  });
+});
+
+describe('isHighFodmap', () => {
+  it('returns true for a high-FODMAP food', () => {
+    expect(isHighFodmap(food({ fodmapRating: 'high' }))).toBe(true);
+  });
+
+  it('returns false for a low-FODMAP food', () => {
+    expect(isHighFodmap(food())).toBe(false);
   });
 });
